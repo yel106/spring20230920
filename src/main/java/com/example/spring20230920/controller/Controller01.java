@@ -10,7 +10,7 @@ public class Controller01 {
         System.out.println("Controller01.method1");
     }
 
-    @RequestMapping("/path1") //요청 경로에 따라서 apping하라 ., 어느 메소드가 실행되어야하는지 알려줌
+    @RequestMapping("/path1") //요청 경로에 따라서 mapping하라 ., 어느 메소드가 실행되어야하는지 알려줌
     public void method2() {
         System.out.println("Controller01.method2");
     }
@@ -21,4 +21,13 @@ public class Controller01 {
     }
 
 
+    @RequestMapping("path4") // 슬래시 생략가능
+    public void method4(){
+        System.out.println("4번째 메소드");
+    }
+
+    @RequestMapping("path5")
+    public void method5(){
+        System.out.println("5번째 메소드");
+    }
 }

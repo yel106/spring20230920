@@ -12,6 +12,12 @@ java {
     sourceCompatibility = '17'
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -20,6 +26,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+
+    //롬복 추가
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
