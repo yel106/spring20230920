@@ -79,6 +79,49 @@ public class Controller10 {
 
     }
 
+    @RequestMapping("sub7")
+    public void method7(Model model) {
+        model.addAttribute("a", 3);
+        model.addAttribute("b", 5);
+
+        model.addAttribute("c", "8");
+        model.addAttribute("d", "9"); //el연산에서는 스트링이 아니고 "8"이 8로 인식됨
+    }
+
+    @RequestMapping("sub8")
+    public void method8(Model model) {
+        model.addAttribute("a", 3);
+        model.addAttribute("b", 5);
+
+        model.addAttribute("c", "java");
+        model.addAttribute("d", "spring");
+
+        model.addAttribute("e", "11");
+        model.addAttribute("f", "2");
+        // ${e > f} 숫자로 치면 11이 크고, 스트링끼리 비교는 2가 큼
+        model.addAttribute("g", 2);
+        // ${e > g} 다른 타입끼리의 비교는 숫자로 변환하려고 함 "11"을 11로 바꾸려고 함
+        //결론: 타입을 맞춰라
+    }
+
+
+    @RequestMapping("sub9")
+    public void method9(Model model) {
+        model.addAttribute("a", "java");
+        model.addAttribute("b", "");
+
+        model.addAttribute("c", List.of(3,4));
+        model.addAttribute("d", List.of());
+
+
+        model.addAttribute("e", Map.of("name", "son"));
+        model.addAttribute("f", Map.of());
+
+        model.addAttribute("g", null);
+
+
+
+    }
 
 
 
