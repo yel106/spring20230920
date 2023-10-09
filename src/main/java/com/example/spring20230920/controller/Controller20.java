@@ -269,27 +269,71 @@ public class Controller20 {
         }
     }
 
+//    @GetMapping("sub11")
+//    //국가로 공급자 조회
+//    public void method11(String country, Model model) throws SQLException {
+//        String sql= """
+//                SELECT SupplierName
+//                FROM suppliers
+//                WHERE country =?
+//                """;
+//
+//        Connection connection = dataSource.getConnection();
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        statement.setString(1, country);
+//        ResultSet resultSet = statement.executeQuery(); // setString이 resultSet보다 위에 있어야 오류가 안 뜸.
+//
+//        List<String> list = new ArrayList<>();
+//        try( connection; statement; resultSet) {
+//            while( resultSet.next()) {
+//                list.add(resultSet.getString(1));
+//            }
+//        }
+//        model.addAttribute("countryList", list);
+//    }
+
     @GetMapping("sub11")
-    //국가로 공급자 조회
-    public void method11(String country, Model model) throws SQLException {
-        String sql= """
-                SELECT SupplierName
-                FROM suppliers
-                WHERE country =?
-                """;
+    public void method11(@RequestParam("country") List<String> countryList) throws SQLException {
+        // /main20/sub11?country=UK&country=USA
+        // /main20/sub11?country=UK&country=Japan&country=USA
+
+        String questionMarks = "";
+
+        for (int i = 0; i < countryList.size(); i++) {
+            questionMarks += "?";
+
+            if (i < countryList.size() - 1) {
+                questionMarks += ", ";          // ?,?,? 이런식으로 가는데 마지막이면 ,이 안붙어야하니까 if문으로 size()-1 조건을 붙임
+            }
+
+        }
+
+        String sql = """
+                             SELECT *
+                             FROM suppliers
+                             WHERE country IN (
+                             """
+                + questionMarks + ")";
 
         Connection connection = dataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, country);
-        ResultSet resultSet = statement.executeQuery(); // setString이 resultSet보다 위에 있어야 오류가 안 뜸.
 
-        List<String> list = new ArrayList<>();
-        try( connection; statement; resultSet) {
-            while( resultSet.next()) {
-                list.add(resultSet.getString(1));
+        for (int i = 0; i < countryList.size(); i++) {
+            statement.setString(i + 1, countryList.get(i));
+        }
+
+        ResultSet resultSet = statement.executeQuery();
+
+        try (connection; statement; resultSet) {
+            System.out.println("##########공급자 목록#########");
+            while (resultSet.next()) {
+                String name = resultSet.getString(2);
+                String country = resultSet.getString(7);
+
+                System.out.println(name + " : " + country);
             }
         }
-        model.addAttribute("countryList", list);
+
     }
 
 }
