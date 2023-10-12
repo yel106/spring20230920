@@ -27,7 +27,6 @@ INSERT INTO employees (EmployeeID, FirstName, LastName)
 
 SELECT * FROM employees;
 
-
 -- 값의 타입에 따라 넣는 방법이 다름
 INSERT INTO employees (EmployeeID)
     VALUE (15); -- 권장
@@ -48,6 +47,7 @@ INSERT INTO employees (BirthDate)
     VALUE ('2000-01-01');
 
 SELECT * FROM employees ORDER BY EmployeeID DESC;
+
 
 
 INSERT INTO products (Price)

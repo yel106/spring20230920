@@ -164,7 +164,9 @@ public class Controller20 {
             System.out.println("고객 목록");
             while (resultSet.next()) {
                 String country = resultSet.getString(2);
-                String name = resultSet.getString(1);
+                // resultSet 커서가 움직이면서 2번째 열에 있는 값을 String country변수가 받음.
+                // 컬럼명인 "country" 써도 결과 같게 나옴
+                String name = resultSet.getString(1); //컬럼명 "customerName" 써도 됨
                 System.out.println(country + ":" + name);
             }
         }

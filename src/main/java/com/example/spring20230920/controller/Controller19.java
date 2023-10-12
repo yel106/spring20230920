@@ -328,7 +328,7 @@ public class Controller19 {
         String sql = """
                 SELECT CustomerID, CustomerName, Address, Country
                 FROM customers
-                WHERE Country = '""" + country + "'"; //String은 따옴표 넣기로 해서 넣어줘야함
+                WHERE Country = ' """ + country + "'"; //String은 따옴표 넣기로 해서 넣어줘야함
 
         // 쿼리 실행
         Connection connection = dataSource.getConnection();
@@ -342,6 +342,8 @@ public class Controller19 {
             // 실행 결과 처리 (method6 참고, MyDto15 사용)
             while (resultSet.next()) {
                 MyDto15 dto = new MyDto15();
+                // 데이터베이스 결과 집합(ResultSet)에서 n번째 열의 값을 정수로 가져와서
+                // DTO(Data Transfer Object) 객체의 id 필드에 할당하는 코드
                 dto.setId(resultSet.getInt(1));
                 dto.setName(resultSet.getString(2));
                 dto.setAddress(resultSet.getString(3));

@@ -20,3 +20,4 @@ SELECT * FROM products WHERE ProductName= '김치';
 DELETE FROM products WHERE ProductName= '김치';
 SELECT * FROM products;
 
+SELECT * FROM products;

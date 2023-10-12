@@ -5,7 +5,7 @@ select *from w3schools.employees;
 select *
 from w3schools.customers;
 
--- squ은 대소문자 구분 안 함
+-- sql은 대소문자 구분 안 함
 SELECT *
 FROM W3SCHOOLS.CUSTOMERS;
 

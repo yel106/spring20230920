@@ -12,8 +12,8 @@
   <title>Title</title>
   <style>
     .active {
-      background-color: darkblue;
-      color: #eeeeee;
+        background-color: beige;
+
     }
   </style>
 </head>
@@ -27,27 +27,28 @@
 
   <c:forEach items="${customerList}" var="customer">
     <tr>
-      <td>${customer.id}</td>
+      <td>${customer.id}</td> <%-- list에 담아놓은 id와 name사용--%>
       <td>${customer.name}</td>
     </tr>
   </c:forEach>
 </table>
+
 <div>
-  <c:if test="${prevPageNumber > 0}">
-    <a href="/main22/sub3?p=${prevPageNumber}">이전</a> |
+  <c:if test="${prevPageNumber > 0 }">
+      <a href="/main22/sub3?p=${prevPageNumber}">이전</a>
   </c:if>
   <c:forEach begin="${leftPageNumber}" end="${rightPageNumber}" var="pageNumber">
+      
     <a
             <c:if test="${pageNumber == currentPage}">
-              class="active"
+            class="active"
             </c:if>
             href="/main22/sub3?p=${pageNumber}">${pageNumber}</a>
-    |
+
   </c:forEach>
   <c:if test="${lastPageNumber >= nextPageNumber}">
-    <a href="/main22/sub3?p=${nextPageNumber}">다음</a>
+      <a href="/main22/sub3?p=${nextPageNumber}">다음</a>
   </c:if>
 </div>
-
 </body>
 </html>

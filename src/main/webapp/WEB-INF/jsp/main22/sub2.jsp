@@ -27,19 +27,19 @@
     <tr>
         <th>id</th>
         <th>name</th>
+        <c:forEach items="${supplierList}" var ="supplier">
+            <tr>
+                <th>${supplier.id}</th>
+                <th>${supplier.name}</th>
+            </tr>
+        </c:forEach>
     </tr>
-    <c:forEach items="${supplierList}" var="supplier">
-        <tr>
-            <td>${supplier.id}</td>
-            <td>${supplier.name}</td>
-        </tr>
-    </c:forEach>
 </table>
 
 <div>
     <c:forEach begin="1" end="${lastPageNumber}" var="pageNumber">
         <a href="/main22/sub2?p=${pageNumber}">${pageNumber}</a>
-        |
+
     </c:forEach>
 </div>
 
