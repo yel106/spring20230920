@@ -13,8 +13,8 @@
     <title>Title</title>
 </head>
 <body>
-
-<form action="">
+<%-- form: http메소드를 전송 . 원하는 경로로 전송--%>
+<form action="/study/sub1" method="post">
 <div>
     고객번호로 담당 직원이름 조회하기
 <input type="text" name="id" placeholder="고객번호를 입력해주세요" value="">

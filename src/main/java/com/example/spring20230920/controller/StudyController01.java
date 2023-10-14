@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,6 +25,10 @@ public class StudyController01 {
     private DataSource dataSource;
 
     @GetMapping("sub1")
+    public void method2() {
+
+    }
+    @PostMapping("sub1")
     public String method1(@RequestParam( value= "id", defaultValue = "1") Integer id,
                         Model model) throws SQLException {
         String sql = """ 
