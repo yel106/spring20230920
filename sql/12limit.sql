@@ -69,7 +69,7 @@ ORDER BY CustomerID
 LIMIT 90, 10; --  마지막 페이지에 10개 나오도록
 
 -- 예) 공급자(suppliers)를 한 페이지에 5개씩 공급자번호 순으로 보여줄 때
--- 3번째 페이지 조회 코드 작성
+              -- 3번째 페이지 조회 코드 작성
 SELECT * FROM suppliers
 ORDER BY SupplierID
 LIMIT 10, 5;
@@ -77,3 +77,5 @@ LIMIT 10, 5;
 -- 한 페이지가 n개의 레코드(row)를 보여주면
 -- m번째 페이지 조회
 -- LIMIT (m-1)*n, n
+
+

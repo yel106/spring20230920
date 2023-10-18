@@ -34,16 +34,17 @@ SELECT  * FROM products;
 SELECT * FROM categories;
 
 SELECT * FROM products JOIN categories
-                            ON products.CategoryID = categories.CategoryID;
+    ON products.CategoryID = categories.CategoryID;
 
 SELECT products.ProductName,
        categories.CategoryName
 FROM products JOIN categories
-                   ON products.CategoryID = categories.CategoryID;
+    ON products.CategoryID = categories.CategoryID;
 
 
 -- table명도 별칭을 줘서 간결하게 쓸 수 있음
 SELECT p.ProductName,
        c.CategoryName
 FROM products AS p JOIN categories AS c  -- AS 생략가능
-                        ON p.CategoryID = c.CategoryID;
+    ON p.CategoryID = c.CategoryID;
+

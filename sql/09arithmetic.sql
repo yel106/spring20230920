@@ -36,3 +36,12 @@ SELECT CustomerID,
        ContactName,
        CONCAT(City, ' ', Country)
 FROM customers;
+
+
+
+
+
+
+
+
+

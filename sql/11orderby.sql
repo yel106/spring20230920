@@ -50,3 +50,4 @@ ORDER BY BirthDate DESC;
 SELECT * FROM products
 WHERE CategoryID = 1
 ORDER BY Price DESC;
+

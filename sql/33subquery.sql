@@ -58,6 +58,7 @@ SELECT OrderID FROM orderdetails
 WHERE ProductID IN (SELECT ProductID FROM products WHERE CategoryID=1);
 
 -- 예) 1번 카테고리에 있는 상품이 주문된 날짜 (orderdetails, products)
+
 SELECT OrderDate FROM  orders
 WHERE OrderID IN (SELECT OrderID FROM orderdetails
                   WHERE ProductID IN (SELECT ProductID FROM products WHERE CategoryID=1));
@@ -104,7 +105,6 @@ DESC table_c;
 -- 예) 1번 카테고리에 있는 상품들로 새 테이블을 만드는데
 -- 새로운 테이블은 productName, categoryName, price
 -- join 써야함
-SELECT * FROM products;
 
 CREATE TABLE table_d
 SELECT p.ProductName, c.CategoryName, p.Price FROM products p

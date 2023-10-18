@@ -14,16 +14,36 @@ WHERE Country = (SELECT country FROM suppliers WHERE SupplierID = 3);
 
 -- 상관커리로 바꾸면 속도가 느려질 우려가 있음(성능 저하 가능성)
 SELECT COUNT(*) FROM suppliers;
+
 SELECT
     s.supplierID,
     (SELECT COUNT(*)
     FROM customers
-    WHERE customers.Country = s.Country) AS 'Number Of customers'
+    WHERE customers.Country = s.Country) AS `Number Of customers`
 FROM suppliers s; -- suppliers 의 컬럼을 각각 사용해야함. 외부쿼리 supplier의 레코드가 내부 쿼리 s.COuntry에 들어감
 
+
+/* -----------------------*/
+-- 공급자ID와 각 나라별 고객의 수 조회
+SELECT SupplierID,
+       (SELECT COUNT(*) FROM customers c
+        WHERE c.Country = s.Country)
+FROM suppliers s;
+
+-- 나라별 고객 수
+SELECT COUNT(*) FROM customers
+WHERE Country ;
+
+
+
+
+
+
+
+
+SELECT * FROM employees;
 -- 예) 각 직원보다 나이가 많은 직원의 수(lastName, Number Of emp)
 -- 별칭을 써서 구분하기
-
 SELECT * FROM employees;
 SELECT LastName,
        (SELECT COUNT(*) FROM employees e2
@@ -32,5 +52,7 @@ FROM employees e1;
 
 
 
+SELECT *
+FROM customers;
 
 
