@@ -1,10 +1,7 @@
 package com.example.spring20230920.dao;
 
 import com.example.spring20230920.domain.*;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,18 +32,6 @@ public interface MyDao4 {
     /*파라미터 fdfdf로 잘못쓰면 찾을수 없다고 뜸
      * 에러메시지 ex) Parameter 'fdfdf' not found. Available parameters are [from, to, param1, param2]
      * */
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Select("""
@@ -89,22 +74,6 @@ public interface MyDao4 {
     Integer select6(MyDto27 dto1, MyDto28 dto2);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Select("""
             SELECT customerName
             FROM customers
@@ -126,6 +95,61 @@ public interface MyDao4 {
             VALUE (#{lastName}, #{firstName})
             """)
     int insert2(MyDto32 emp);
+
+
+    @Delete("""
+            DELETE FROM customers
+            WHERE CustomerID= #{id}
+            """)
+    int delete1(int id); // 파라미터 하나. 딜리트면 리턴값 안받아도 되는데 excuteUpdate()가 받는게 INteger니까 그걸 사용
+
+
+    @Delete("""
+            DELETE FROM products
+            WHERE ProductID = #{pid}
+            """)
+    int delete2(int pid);
+
+
+
+    @Select("""
+            SELECT EmployeeID id, LastName, FirstName, BirthDate, Photo, Notes
+            FROM employees
+            WHERE EmployeeID = #{id}
+            """)
+    MyDto33Employee select8(Integer id);
+
+
+    @Update ("""
+            UPDATE employees
+            SET LastName = #{lastName}, FirstName= #{firstName},
+                Photo = #{photo}, Notes = #{notes},
+                BirthDate = #{birthDate}
+            WHERE EmployeeID = #{id}
+            """)
+    int update1(MyDto33Employee employee);
+
+
+    @Select("""
+            SELECT CustomerID, CustomerName, City, Country
+            FROM customers
+            WHERE CustomerID = #{customerId}
+            """)
+    MyDto34Customer select15(Integer CustomerId);
+
+
+    @Update("""
+            UPDATE customers
+            SET CustomerID = #{customerId}, CustomerName= #{customerName},
+                City = #{city}, Country = #{country}
+            WHERE CustomerID = #{customerId}
+            """)
+    // 프로퍼티명 쓸때 대소문자 구분 잘 하기
+    int update2(MyDto34Customer customer);
+
+
+
+
 
 
 }

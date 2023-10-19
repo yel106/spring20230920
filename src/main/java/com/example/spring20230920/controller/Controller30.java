@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -108,6 +109,71 @@ public class Controller30 {
        System.out.println(row + "행이 입력됨");
    }
 
+   // /main30/sub11?id=5
+   @GetMapping("sub11")
+    public void method11(Integer id) { //파라미터 여기에 써줌
+       int rows = dao.delete1(id);
+       System.out.println( rows + "개 행이 지워짐");
+   }
 
+   // /main30/sub12?pid=3
+    //3번 상품이 삭제되는 메소드 완성
+   @GetMapping("sub12")
+    public void method12(Integer pid) {
+       int rows = dao.delete2(pid);
+       System.out.println("rows = " + rows +"개 행 지워짐");
+   }
+
+
+   // /mina30/sub13?id=2
+    @GetMapping("sub13")
+    public void method13(Integer id, Model model){
+        // 직원 조회
+        MyDto33Employee employee = dao.select8(id);
+
+        model.addAttribute("employee", employee);
+
+    }
+
+    @PostMapping("sub14")
+    public String method14(MyDto33Employee employee, RedirectAttributes rttr) { //수정한것을 자바빈에서 받음
+        // 직원 수정. 수정한것을 자바빈에서 받음
+        int rows= dao.update1(employee);
+
+        // 모델에 추가
+        if ( rows ==1) {
+            rttr.addFlashAttribute("message", "정보가 수정되었습니다.");
+        } else {
+            rttr.addFlashAttribute("message", "정보 수정에 실패하였습니다.");
+        }
+
+        // 쿼리스트링 추가
+        rttr.addAttribute("id", employee.getId());
+
+        return "redirect:/main30/sub13";
+    }
+
+
+    // GET /main30/sub15?id=3
+    @GetMapping("sub15")
+    public void method15(Integer customerId, Model model) {
+        MyDto34Customer customer = dao.select15(customerId);
+        model.addAttribute("customer", customer);
+    }
+
+    // 3번 고객 조회 -> view로 포워딩
+    // POST /main30/sub16
+    // 고객 정보 수정 -> /main30/sub15?id= 으로 redirect
+    @PostMapping("sub16")
+    public String method16(MyDto34Customer customer, RedirectAttributes rttr) {
+        int update = dao.update2(customer);
+        if( update ==1) {
+            System.out.println("업데이트 되었습니다.");
+        } else {
+            System.out.println("실패하였습니다.");
+        }
+        rttr.addAttribute("CustomerId", customer.getCustomerId());
+        return "redirect:/main30/sub15";
+    }
 
 }
