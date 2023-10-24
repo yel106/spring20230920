@@ -69,6 +69,7 @@
     </script>
 </div>
 
+
 <%-- 꺼내서 써보기--%>
 <div>
     <div>
@@ -247,5 +248,22 @@
         </script>
     </div>
 </div>
+
+<div>
+    <div>
+        <button onclick="ajax13()">button13</button>
+        <script>
+            function ajax13() {
+                // axios.request( {
+                //     url: "/main35/sub11"         /*method: "get" 안써도 기본으로 get방식으로 감*/
+                //     method: "get"
+                // });
+                axios.get("/main35/sub11"); //주석 처리한 것과 같은 말
+            }
+        </script>
+    </div>
+</div>
+
+
 </body>
 </html>
