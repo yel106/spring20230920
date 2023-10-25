@@ -40,7 +40,7 @@ public class Controller38 {
     @ResponseBody
     public String method2() {
         try {
-            Thread.sleep((5000)); //쓰레드 해놔서 5초 후에 콘솔에 찍힘
+            Thread.sleep((1000)); //쓰레드 해놔서 5초 후에 콘솔에 찍힘
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
