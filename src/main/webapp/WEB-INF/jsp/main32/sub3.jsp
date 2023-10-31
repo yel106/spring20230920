@@ -22,7 +22,7 @@
 <form action="/main32/sub4" method="post">
     <div>
         lastName
-        <input type="lastName">
+        <input type="text" name="lastName">
     </div>
     <div>
         firstName
