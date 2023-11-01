@@ -11,10 +11,6 @@ import java.util.Map;
 @Mapper
 public interface MyDao6 {
 
-
-
-
-
     @Insert("""
 
             INSERT INTO customers (CustomerName)

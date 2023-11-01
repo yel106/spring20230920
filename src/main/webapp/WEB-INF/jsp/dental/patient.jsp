@@ -20,7 +20,7 @@
          table {
              /*border-collapse: collapse;*/
              width: 70%;
-             height: 1000px;
+             height: 400px;
              margin: auto;
              border: 0px solid black;
 
@@ -34,22 +34,31 @@
     </style>
 
 
-    <form action="/dental/crud">
+    <form action="/dental/insert" >
     <table>
         <tr>
+            <button>등록</button>
             <th>차트번호</th>
             <th>환자성명</th>
             <th>주민등록번호</th>
             <th>보험구분</th>
             <th>최종내원일</th>
-            <button>등록</button>
-            <button>수정</button>
-            <button>삭제</button>
         </tr>
     </table>
     </form>
 
 
+    <form action="/dental/delete">
+        <button>삭제</button>
+    </form>
 
+    <form action="/dental/update">
+        <button>수정</button>
+    </form>
+
+
+    <form action="/dental/select">
+        <button>조회</button>
+    </form>
 </body>
 </html>
